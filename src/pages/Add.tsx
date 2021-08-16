@@ -3,8 +3,8 @@ import { FormEvent } from 'react';
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import Template from '../components/Template';
-import { addCar } from '../store/cars';
-import { showMessage, hideMessage } from '../store/layouts';
+import { showMessage, hideMessage } from '../store/ducks/layouts';
+import { addPostCar } from '../store/featchActions';
 
 // import { Container } from './styles';
 
@@ -17,7 +17,7 @@ const Add: React.FC = () => {
 
     console.log(name);
     console.log(url);
-    dispatch(addCar({
+    dispatch(addPostCar({
       name,
       url
     }))

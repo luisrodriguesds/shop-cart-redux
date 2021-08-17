@@ -1,16 +1,15 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
-type Car = {
+
+export type ICar = {
 	id?: string,
 	name: string,
 	url: string
 }
 
-const INITIAL_STATE: Car[] = [];
+const INITIAL_STATE: ICar[] = [];
 
-
-export const addCar = createAction<Car>('ADD_CAR')
-export const addCars = createAction<Car[]>('ADD_CARS')
-
+export const addCar = createAction<ICar>('ADD_CAR')
+export const addCars = createAction<ICar[]>('ADD_CARS')
 
 export default createReducer(INITIAL_STATE, {
 	[addCar.type]: (state, action) => [...state, action.payload],

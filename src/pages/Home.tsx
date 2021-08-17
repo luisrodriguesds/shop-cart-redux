@@ -5,30 +5,38 @@ import Template from '../components/Template';
 import { useEffect } from 'react';
 import { getAllCars } from '../store/featchActions';
 import { useCallback } from 'react';
-import { addItem } from '../store/ducks/cart';
+import { addItem, removeItem } from '../store/ducks/cart';
+import { ICar } from '../store/ducks/cars';
 
-type ICar = {
-  id: string;
-  name: string;
-  url: string;
-}
+
 
 const Home: React.FC = () => {
   const dispatch = useDispatch()
-  const cars: any = useSelector((state: any) => {
+  const cars: ICar[] = useSelector((state: any) => {
     return state.cars;
   })
+  const cart: ICar[] = useSelector((state: any) => state.cart)
 
   useEffect(() => {
     dispatch(getAllCars())
   }, [dispatch])
 
   const addItemCart = useCallback((car: ICar) => {
-    console.log(car, 'oid')
     dispatch(
       addItem(car)
     )
   }, [dispatch])
+
+  const removeItemCart = useCallback((car: ICar) => {
+    dispatch(
+      removeItem(car)
+    )
+  }, [dispatch])
+
+  const checkInBascket = useCallback((car: ICar) => {
+    const findCar = cart.find(item => item.id === car.id);
+    return !!findCar;
+  }, [cart])
 
   return (
     <Template>
@@ -36,7 +44,12 @@ const Home: React.FC = () => {
         <div className="row mt-4">
             {cars.map((car: any, index: number) => (
               <div className="col-4" key={car.id}>
-                <Car car={car} addItemCart={addItemCart} />
+                <Car 
+                  car={car} 
+                  addItemCart={addItemCart} 
+                  checkInBascket={checkInBascket}
+                  removeItemCart={removeItemCart} 
+                />
               </div>
             ))}
         </div>

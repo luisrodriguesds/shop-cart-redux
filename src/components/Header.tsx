@@ -1,9 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-// import { Container } from './styles';
-
 const Header: React.FC = () => {
+  const cart = useSelector((state: any) => state.cart.length);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
             <Link className="nav-link" to="/add">Adicionar</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/cart">Carrinho (0)</Link>
+            <Link className="nav-link" to="/cart">Carrinho ({cart})</Link>
           </li>
         </ul>
           <form className="d-flex">

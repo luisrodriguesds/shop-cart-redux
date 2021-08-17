@@ -4,14 +4,10 @@ import { useSelector } from 'react-redux';
 // import { Container } from './styles';
 
 const Message: React.FC = () => {
-  const isShow = useSelector((state: any) => {
-    console.log(state)
-    return state.layouts.showMessage
-  });
+  const isShow = useSelector((state: any) => state.layouts.showMessage);
 
   return (
     <>
-    {console.log(isShow, 'aqui')}
     {isShow && (
       <div className="container mt-4">
         <div className="row">

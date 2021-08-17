@@ -4,7 +4,6 @@ import { addCar, addCars } from "../ducks/cars"
 export const getAllCars = () => {
   return (dispatch: any) => {
     api.get('/cars').then(res => {
-      console.log(res.data)
       dispatch(addCars(res.data))
     }).catch(console.log)
   }

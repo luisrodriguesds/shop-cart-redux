@@ -1,0 +1,16 @@
+.mini-product {
+  display: flex;
+}
+
+.mini-product img {
+  width: 80px;
+  margin-right: 16px;
+}
+
+.mini-product span p {
+  font-weight: bold;
+}
+
+.btn-toolbar {
+  align-items: center;
+}
